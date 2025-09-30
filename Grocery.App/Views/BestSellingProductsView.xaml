@@ -6,13 +6,9 @@
              x:Class="Grocery.App.Views.BestSellingProductsView"
              x:DataType="vm:BestSellingProductsViewModel"
              Title="BestSellingProductsView">
-
     <Shell.TitleView>
         <Grid>
-            <Label Text="Best verkochte producten"
-                   FontSize="Large"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+            <Label Text="Best verkochte producten" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
         </Grid>
     </Shell.TitleView>
 
@@ -21,8 +17,6 @@
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
             </CollectionView.ItemsLayout>
-
-            <!-- Header -->
             <CollectionView.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -31,15 +25,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Text="#" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Grid.Column="1" Text="Product" FontAttributes="Bold"/>
-                    <Label Grid.Column="2" Text="Aantal verkocht" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Grid.Column="3" Text="Voorraad" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <!-- PLaats hier de header velden voor de tabel-->
                 </Grid>
             </CollectionView.Header>
-
-            <!-- Rows -->
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:BestSellingProducts">
                     <Grid>
@@ -49,11 +37,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0" Text="{Binding Ranking}" HorizontalOptions="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Name}"/>
-                        <Label Grid.Column="2" Text="{Binding NrOfSells}" HorizontalOptions="Center"/>
-                        <Label Grid.Column="3" Text="{Binding Stock}" HorizontalOptions="Center"/>
+                        <!-- PLaats hier de datavelden voor de tabel-->
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
