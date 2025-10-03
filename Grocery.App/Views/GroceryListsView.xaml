@@ -11,6 +11,12 @@
             <Label Text="Boodschappenlijsten" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
         </Grid>
     </Shell.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Admin Menu" Command="{Binding ShowBoughtProductsCommand}" />
+    </ContentPage.ToolbarItems>
+
+
 
     <Border Stroke="#C49B33"
         StrokeThickness="4"
