@@ -97,6 +97,7 @@ namespace Grocery.App.ViewModels
         [RelayCommand]
         public void IncreaseAmount(int productId)
         {
+            System.Diagnostics.Debug.WriteLine($"[DEBUG] IncreaseAmount aangeroepen voor ProductId: {productId}");
             GroceryListItem? item = MyGroceryListItems.FirstOrDefault(x => x.ProductId == productId);
             if (item == null) return;
             if (item.Amount >= item.Product.Stock) return;
