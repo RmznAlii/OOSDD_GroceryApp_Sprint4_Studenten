@@ -10,11 +10,13 @@ namespace Grocery.App.ViewModels
     {
         public ObservableCollection<GroceryList> GroceryLists { get; set; }
         private readonly IGroceryListService _groceryListService;
+        private readonly GlobalViewModel _globalViewModel;
 
-        public GroceryListViewModel(IGroceryListService groceryListService) 
+        public GroceryListViewModel(IGroceryListService groceryListService, GlobalViewModel globalViewModel) 
         {
             Title = "Boodschappenlijst";
             _groceryListService = groceryListService;
+            _globalViewModel = globalViewModel;
             GroceryLists = new(_groceryListService.GetAll());
         }
 
@@ -24,6 +26,22 @@ namespace Grocery.App.ViewModels
             Dictionary<string, object> paramater = new() { { nameof(GroceryList), groceryList } };
             await Shell.Current.GoToAsync($"{nameof(Views.GroceryListItemsView)}?Titel={groceryList.Name}", true, paramater);
         }
+        
+        [RelayCommand]
+        public async Task ShowBoughtProducts()
+        {
+            /// <summary>
+            /// Opent het scherm waarin alle aankopen per product worden getoond.
+            /// Alleen gebruikers met de rol Admin hebben toegang tot deze functionaliteit.
+            /// Als de huidige client geen admin is, gebeurt er niets.
+            /// </summary>
+            if (_globalViewModel.Client != null && _globalViewModel.Client.Role == Role.Admin)
+            {
+                await Shell.Current.GoToAsync(nameof(Views.BoughtProductsView));
+            }
+        }
+
+        
         public override void OnAppearing()
         {
             base.OnAppearing();
